@@ -1,0 +1,12 @@
+.sx-layout {
+  min-height: 100vh;
+  &__header {
+    background-color: #fff;
+    padding: 0;
+    height: 90px;
+  }
+
+  &__content {
+    padding: 10px;
+  }
+}

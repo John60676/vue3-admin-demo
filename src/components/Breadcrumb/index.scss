@@ -1,0 +1,14 @@
+.sx-breadcrumb {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  &__links {
+    cursor: pointer;
+    display: inline-block;
+    &--disabled {
+      cursor: auto;
+      color: #999;
+    }
+  }
+}

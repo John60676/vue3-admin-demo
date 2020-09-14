@@ -1,0 +1,31 @@
+.sx-tag-item {
+  user-select: none;
+  padding: 6px 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  color: #808695;
+  position: relative;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  &--active {
+    color: #1890ff;
+  }
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #dbdbdd;
+    display: inline-block;
+    &--active {
+      background-color: #1890ff;
+    }
+  }
+  &__close {
+    display: inline-block;
+    color: #eee;
+    &:hover {
+      color: #808695;
+    }
+  }
+}

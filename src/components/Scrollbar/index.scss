@@ -1,0 +1,38 @@
+.sx-scrollbar {
+  position: relative;
+  height: 100%;
+  &__scroll-wrap {
+    position: absolute;
+    height: 100%;
+    background-color: #f5f7f9;
+    left: 28px;
+    right: 28px;
+  }
+  &__scroll-inner {
+    overflow: visible;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 5px 1px 0;
+    transition: left 0.3s ease;
+  }
+  &__btn {
+    height: 100%;
+    width: 28px;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f7f9;
+    cursor: pointer;
+    &-left {
+      left: 0;
+    }
+    &-right {
+      right: 0;
+    }
+  }
+}
