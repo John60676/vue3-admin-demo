@@ -1,7 +1,12 @@
-import { computed, CSSProperties, defineComponent, nextTick, onMounted, ref, toRefs, watchEffect } from 'vue';
+import { computed, CSSProperties, defineComponent, onMounted, ref, toRefs } from 'vue';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
+import Sortable from 'sortablejs';
 import classNames from 'classnames';
 import createNamespace from '@/utils/bem';
+import { switchView } from '@/store/modules/tagsView/dispatchAction';
+import { useStore } from 'vuex';
+import { RootStoreType } from '@/types/store';
+
 import './index.scss';
 
 const namespace = 'sx-scrollbar';
@@ -18,6 +23,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const { class: customClass } = toRefs(props);
     const scrollValue = ref(0);
+    const store = useStore<RootStoreType>();
     const leftStyle = computed<CSSProperties>(() => ({
       left: `${scrollValue.value}px`,
     }));
@@ -57,6 +63,21 @@ export default defineComponent({
       let nextScrollDistance = scrollValue.value - fixedScrollValue;
       scrollValue.value = nextScrollDistance <= max ? max : nextScrollDistance;
     };
+
+    // 绑定 sortable
+    const bindSortable = () => {
+      const innerElement = scrollInner.value as HTMLDivElement;
+      new Sortable(innerElement, {
+        animation: 150,
+        onUpdate: ({ oldIndex, newIndex }) => {
+          store.dispatch(switchView(oldIndex, newIndex));
+        },
+      });
+    };
+
+    onMounted(() => {
+      bindSortable();
+    });
 
     return () => (
       <div class={classNames([bem(), customClass.value])}>

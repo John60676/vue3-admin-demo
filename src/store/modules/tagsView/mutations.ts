@@ -1,6 +1,13 @@
 import { TagsViewMutationsTree } from '@/types/store/modules/tagsView';
 import router from '@/router';
-import { ADD_VISITED_VIEW, DEL_ALL_VISITED_VIEW, DEL_OTHER_VISITED_VIEW, DEL_VISITED_VIEW } from './mutationType';
+import { cloneDeep } from 'lodash-es';
+import {
+  ADD_VISITED_VIEW,
+  DEL_ALL_VISITED_VIEW,
+  DEL_OTHER_VISITED_VIEW,
+  DEL_VISITED_VIEW,
+  SWITCH_VISITED_VIEW,
+} from './mutationType';
 
 const mutations: TagsViewMutationsTree = {
   [ADD_VISITED_VIEW]: (state, { view }) => {
@@ -27,6 +34,13 @@ const mutations: TagsViewMutationsTree = {
   [DEL_OTHER_VISITED_VIEW]: (state, { currentView }) => {
     const keepTagsView = state.visitedViews.filter(i => i.meta.tagFixed || i.name === currentView.name);
     state.visitedViews = keepTagsView;
+  },
+  [SWITCH_VISITED_VIEW]: (state, { oldIndex, newIndex }) => {
+    if (typeof oldIndex !== 'undefined' && typeof newIndex !== 'undefined') {
+      const visitedViews = cloneDeep(state.visitedViews);
+      [visitedViews[newIndex], visitedViews[oldIndex]] = [visitedViews[oldIndex], visitedViews[newIndex]];
+      state.visitedViews = visitedViews;
+    }
   },
 };
 

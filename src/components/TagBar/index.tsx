@@ -63,6 +63,7 @@ export default defineComponent({
         <Scrollbar>
           {visitedsViewList.value.map(item => (
             <TagItem
+              key={item.name as string}
               onClick={handleRouteDump}
               onClose={handleCloseTag}
               onCloseAll={handleCloseAllTag}

@@ -1,5 +1,11 @@
 import { TagsViewDispatchAction } from '@/types/store/modules/tagsView';
-import { TAGSVIEW_ADDVIEW, TAGSVIEW_DELALLVIEW, TAGSVIEW_DELOTHERVIEW, TAGSVIEW_DELVIEW } from './actionsType';
+import {
+  TAGSVIEW_ADDVIEW,
+  TAGSVIEW_DELALLVIEW,
+  TAGSVIEW_DELOTHERVIEW,
+  TAGSVIEW_DELVIEW,
+  TAGSVIEW_SWITCHVIEW,
+} from './actionsType';
 
 export const addView: TagsViewDispatchAction['addView'] = view => {
   return {
@@ -25,5 +31,13 @@ export const delOtherView: TagsViewDispatchAction['delOtherView'] = currentView 
   return {
     type: TAGSVIEW_DELOTHERVIEW,
     currentView,
+  };
+};
+
+export const switchView: TagsViewDispatchAction['switchView'] = (oldIndex, newIndex) => {
+  return {
+    type: TAGSVIEW_SWITCHVIEW,
+    oldIndex,
+    newIndex,
   };
 };
