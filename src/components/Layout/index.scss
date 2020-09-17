@@ -1,7 +1,8 @@
 .sx-layout {
   min-height: 100vh;
   &__right-wrap {
-    overflow: auto;
+    position: relative;
+    overflow: hidden;
     transition: margin-left 0.2s ease;
   }
   &__header {
@@ -19,8 +20,15 @@
     position: fixed;
     left: 0;
   }
+
   &__content {
-    margin-top: 90px;
+    top: 90px;
+    height: calc(100% - 90px);
+    left: 0;
+    position: absolute;
+    width: 100%;
     padding: 10px;
+    overflow-x: hidden;
+    overflow: scroll;
   }
 }

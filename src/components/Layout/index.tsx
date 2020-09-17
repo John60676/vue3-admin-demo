@@ -42,17 +42,19 @@ export default defineComponent({
               <NavBar />
               <TagBar />
             </Layout.Header>
-            <Layout.Content class={bem('content')}>
-              <router-view
-                v-slots={{
-                  default: ({ Component }) => (
-                    <KeepAlive>
-                      <Component />
-                    </KeepAlive>
-                  ),
-                }}
-              />
-            </Layout.Content>
+            <Layout class={bem('content')}>
+              <Layout.Content>
+                <router-view
+                  v-slots={{
+                    default: ({ Component }) => (
+                      <KeepAlive>
+                        <Component />
+                      </KeepAlive>
+                    ),
+                  }}
+                />
+              </Layout.Content>
+            </Layout>
           </Layout>
         </Layout>
       );
