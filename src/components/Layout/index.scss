@@ -1,12 +1,26 @@
 .sx-layout {
   min-height: 100vh;
+  &__right-wrap {
+    overflow: auto;
+    transition: margin-left 0.2s ease;
+  }
   &__header {
     background-color: #fff;
     padding: 0;
     height: 90px;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    transition: width 0.2s ease;
   }
-
+  &__sider {
+    overflow: auto;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+  }
   &__content {
+    margin-top: 90px;
     padding: 10px;
   }
 }
