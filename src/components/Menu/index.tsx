@@ -1,10 +1,11 @@
-import { defineComponent, ref, computed, watchEffect } from 'vue';
+import { defineComponent, ref, computed, watchEffect, inject } from 'vue';
 import { Menu } from 'ant-design-vue';
 import { useStore } from 'vuex';
 import { RootStoreType } from '@/types/store';
 import { RouteRecordRaw, useRoute } from 'vue-router';
 import RenderMenuItem from './MenuItem';
 import createNamespace from '@/utils/bem';
+import { LayoutIsCollapsed } from '@/components/Layout';
 import './index.scss';
 
 const namespace = 'sx-menu';
@@ -21,11 +22,15 @@ export default defineComponent({
     );
 
     const selectedKeys = computed(() => [route.path]);
-
+    const layoutIsCollapsed = inject(LayoutIsCollapsed, ref(false));
     const openRoute = ref<string[]>([]);
     watchEffect(() => {
-      const _openRoute = route.matched.slice(0, route.matched.length - 1);
-      openRoute.value = _openRoute.map(i => i.path);
+      if (layoutIsCollapsed.value) {
+        openRoute.value = [];
+      } else {
+        const _openRoute = route.matched.slice(0, route.matched.length - 1);
+        openRoute.value = _openRoute.map(i => i.path);
+      }
     });
 
     return () => (

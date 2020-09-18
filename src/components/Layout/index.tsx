@@ -1,4 +1,4 @@
-import { defineComponent, ref, KeepAlive, computed } from 'vue';
+import { defineComponent, ref, KeepAlive, computed, provide } from 'vue';
 import { Layout } from 'ant-design-vue';
 import Menu from '@/components/Menu';
 import Logo from '@/components/Logo';
@@ -9,6 +9,7 @@ import './index.scss';
 
 const namespace = 'sx-layout';
 const bem = createNamespace(namespace);
+export const LayoutIsCollapsed = 'LayoutIsCollapsed';
 
 export default defineComponent({
   name: namespace,
@@ -17,6 +18,7 @@ export default defineComponent({
     const siderWidth = 200; // 菜单栏展开宽度
     const collapsedWidth = 80; // 菜单栏折叠宽度
     const siderWidthRef = computed(() => (isCollapsed.value ? collapsedWidth : siderWidth));
+    provide('LayoutIsCollapsed', isCollapsed);
 
     return () => {
       const headerStyle = {
