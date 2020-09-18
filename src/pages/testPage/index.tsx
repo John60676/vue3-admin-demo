@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue';
 import createNamespace from '@/utils/bem';
+
 import './index.scss';
 
 const namespace = 'sx-testpage';
@@ -10,8 +11,9 @@ export default defineComponent({
   setup() {
     return () => (
       <div class={bem()}>
-        测试页面
-        <input type='text' />
+        {[...Array(100)].map((_, index) => (
+          <div>test{index}</div>
+        ))}
       </div>
     );
   },
