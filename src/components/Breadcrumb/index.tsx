@@ -49,7 +49,7 @@ export default defineComponent({
     });
 
     const handleRoutePush = (routeItem: MatchRouteType) => {
-      if (routeItem.redirect) {
+      if (routeItem.redirect && typeof routeItem.redirect !== 'function') {
         router.push(routeItem.redirect);
       } else {
         router.push(routeItem.path);
