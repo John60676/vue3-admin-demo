@@ -12,8 +12,18 @@ declare module 'vue-router' {
 }
 
 export const ROUTE_HOME = 'home';
+export const ROUTE_LOGIN = 'login';
 
 const constantRoutes: RouteRecordRaw[] = [
+  {
+    name: ROUTE_LOGIN,
+    path: '/login',
+    component: () => import('@/pages/login'),
+    meta: {
+      title: '登录',
+      icon: 'icon-xihuan',
+    },
+  },
   {
     name: ROUTE_HOME,
     path: '/',

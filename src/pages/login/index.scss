@@ -1,0 +1,26 @@
+.sx-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  &__login-form {
+    width: 400px;
+  }
+
+  &__header {
+    width: 100%;
+    background-color: transparent;
+  }
+  &__main {
+  }
+  &__footer {
+    width: 100%;
+    text-align: center;
+  }
+  &__logo {
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+}
