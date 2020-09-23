@@ -47,13 +47,26 @@ const constantRoutes: RouteRecordRaw[] = [
     component: Layout,
     redirect: '/testPage/index',
     name: 'testPage',
+    meta: {
+      title: '父级页面',
+      icon: 'icon-xihuan',
+    },
     children: [
       {
         name: 'testPage/index',
         path: 'index',
         component: () => import('@/pages/testPage'),
         meta: {
-          title: '页面一',
+          title: '测试滚动',
+          icon: 'icon-xihuan',
+        },
+      },
+      {
+        name: 'testPage/page2',
+        path: 'page2',
+        component: () => import('@/pages/testPage2'),
+        meta: {
+          title: '测试页面',
           icon: 'icon-xihuan',
         },
       },
