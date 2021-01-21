@@ -44,7 +44,7 @@ export default defineComponent({
               <NavBar />
               <TagBar />
             </Layout.Header>
-            <Layout class={bem('content')}>
+            <Layout class={bem('content')} id='layout-content'>
               <Layout.Content>
                 <router-view
                   v-slots={{

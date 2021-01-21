@@ -45,7 +45,7 @@ const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/testPage',
     component: Layout,
-    redirect: '/testPage/index',
+    redirect: '/testPage/input',
     name: 'testPage',
     meta: {
       title: '父级页面',
@@ -53,8 +53,8 @@ const constantRoutes: RouteRecordRaw[] = [
     },
     children: [
       {
-        name: 'testPage/index',
-        path: 'index',
+        name: 'testPage/input',
+        path: 'input:lang(.*)',
         component: () => import('@/pages/testPage'),
         meta: {
           title: '测试滚动',
@@ -62,8 +62,8 @@ const constantRoutes: RouteRecordRaw[] = [
         },
       },
       {
-        name: 'testPage/page2',
-        path: 'page2',
+        name: 'testPage/input-number',
+        path: 'input-number:lang(.*)',
         component: () => import('@/pages/testPage2'),
         meta: {
           title: '测试页面',

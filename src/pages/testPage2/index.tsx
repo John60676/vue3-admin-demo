@@ -1,14 +1,28 @@
-import { defineComponent } from 'vue';
-import createNamespace from '@/utils/bem';
+import { defineComponent, watchEffect } from 'vue';
+import { useRequest } from 'vue-request';
 
-import './index.scss';
-
-const namespace = 'sx-testpage2';
-const bem = createNamespace(namespace);
+function testService() {
+  return new Promise<string>(resolve => {
+    setTimeout(() => {
+      resolve(new Date().toLocaleString());
+    }, 1000);
+  });
+}
 
 export default defineComponent({
-  name: namespace,
+  name: 'App',
   setup() {
-    return () => <div class={bem()}>test2</div>;
+    const { data, loading, refresh } = useRequest(testService);
+
+    watchEffect(() => {
+      console.log('data', data.value);
+    });
+    return () => (
+      <div>
+        <button onClick={() => refresh()}>refresh</button>
+        <br />
+        {loading.value ? 'loading...' : JSON.stringify(data.value)}
+      </div>
+    );
   },
 });
