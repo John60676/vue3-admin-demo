@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-d2f8591c"],{"3d92":function(e,t,n){},e292:function(e,t,n){"use strict";n.r(t);var c=n("7a23"),o=n("941c"),a=(n("3d92"),"sx-testpage2"),s=Object(o["a"])(a);t["default"]=Object(c["defineComponent"])({name:a,setup:function(){return function(){return Object(c["createVNode"])("div",{class:s()},[Object(c["createTextVNode"])("test2")])}}})}}]);
-//# sourceMappingURL=chunk-d2f8591c.8bbf335a.js.map
